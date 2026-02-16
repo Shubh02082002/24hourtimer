@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-            background: #ffffff;
+            background: #000000;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -22,12 +22,12 @@
         }
 
         .container {
-            background: white;
-            border-radius: 8px;
-            padding: 20px 25px;
-            max-width: 320px;
+            background: #000000;
+            border-radius: 6px;
+            padding: 12px 15px;
+            max-width: 200px;
             width: 100%;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 1px 4px rgba(255, 255, 255, 0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -35,61 +35,56 @@
 
         .warning-text {
             text-align: center;
-            font-size: 18px;
-            color: #000;
-            font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            line-height: 1.2;
+            font-size: 11px;
+            color: #fff;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: 0.6px;
             font-family: 'Sohne', 'Helvetica Neue', sans-serif;
         }
 
         .timer {
             font-family: 'IBM Plex Mono', 'Monaco', 'Courier New', monospace;
-            font-size: 36px;
+            font-size: 22px;
             font-weight: 600;
-            color: #000000;
+            color: #ffffff;
             font-variant-numeric: tabular-nums;
-            letter-spacing: 0px;
-            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
             text-align: center;
         }
 
-        .timer-sublabel {
-            font-size: 10px;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            margin-bottom: 10px;
-            font-weight: 500;
-            font-family: 'Sohne', 'Helvetica Neue', sans-serif;
-        }
-
         .date-text {
-            font-size: 11px;
-            color: #666;
-            font-weight: 500;
-            letter-spacing: 0.4px;
-            text-transform: uppercase;
+            font-size: 8px;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.3px;
             font-family: 'Sohne', 'Helvetica Neue', sans-serif;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="warning-text">This time<br>won't come back</div>
+        <div class="warning-text">Time flies...</div>
         
         <div class="timer" id="timer">00:00:00</div>
-        
-        <div class="timer-sublabel">Time Remaining | Be Productive</div>
         
         <div class="date-text" id="dateText">MONDAY | 16 FEBRUARY, 2026</div>
     </div>
 
     <script>
-        const dayNames = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
-        const monthNames = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
+        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        function getOrdinalSuffix(day) {
+            if (day > 3 && day < 21) return 'th';
+            switch (day % 10) {
+                case 1: return 'st';
+                case 2: return 'nd';
+                case 3: return 'rd';
+                default: return 'th';
+            }
+        }
 
         function updateTimer() {
             const now = new Date();
@@ -112,8 +107,9 @@
             const monthName = monthNames[now.getMonth()];
             const date = now.getDate();
             const year = now.getFullYear();
+            const suffix = getOrdinalSuffix(date);
             
-            document.getElementById('dateText').textContent = `${dayName} | ${date} ${monthName}, ${year}`;
+            document.getElementById('dateText').textContent = `${dayName} | ${date}${suffix} ${monthName}, ${year}`;
         }
 
         // Update immediately on load
