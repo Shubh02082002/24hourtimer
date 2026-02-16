@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-            background: #000000;
+            background: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -22,50 +22,54 @@
         }
 
         .container {
-            background: #000000;
+            background: #ffffff;
             border-radius: 6px;
             padding: 12px 15px;
             max-width: 200px;
             width: 100%;
-            box-shadow: 0 1px 4px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
             align-items: center;
+            border: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         .warning-text {
             text-align: center;
             font-size: 11px;
-            color: #fff;
+            color: #000;
             font-weight: 800;
             margin-bottom: 8px;
             letter-spacing: 0.6px;
             font-family: 'Sohne', 'Helvetica Neue', sans-serif;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
         }
 
         .timer {
             font-family: 'IBM Plex Mono', 'Monaco', 'Courier New', monospace;
             font-size: 22px;
             font-weight: 600;
-            color: #ffffff;
+            color: #000000;
             font-variant-numeric: tabular-nums;
             letter-spacing: -0.5px;
             margin-bottom: 4px;
             text-align: center;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
         }
 
         .date-text {
             font-size: 8px;
-            color: #ffffff;
+            color: #000000;
             font-weight: 700;
             letter-spacing: 0.3px;
             font-family: 'Sohne', 'Helvetica Neue', sans-serif;
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="warning-text">Time flies...</div>
+        <div class="warning-text">Be Productive</div>
         
         <div class="timer" id="timer">00:00:00</div>
         
